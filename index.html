@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Game</title>
+
+    <style>
+    body{
+        background-color: rgb(20, 20, 20); 
+        color: whitesmoke; 
+        text-align: center;
+    }
+
+    .help{
+        position: absolute;
+        color: white;
+        background-color: #3560AB;
+        text-decoration: none;
+        padding: 10px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .help:hover{
+        background-color: #27429c;
+    }
+
+    #help_div{
+        background-color: whitesmoke;
+        color: #2f3130;
+        position: absolute;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+        top: 70px;
+        right: 15px;
+        max-width: 25%;
+        padding: 10px;
+    }
+
+    .flex_paragraph{
+        padding-bottom: 10px;
+        background-color: whitesmoke;
+        color: #2f3130;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: justify;
+    }
+
+    .flex_paragraph img{
+        /* margin-right: 20px; */
+        margin: 2%;
+        width: 35%;
+    }
+
+    .flex_paragraph .imgs{
+        width: 120%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 2%;
+    }
+
+    .flex_paragraph .imgs img{
+        width: 100%;
+    }
+
+    h1{
+        font-size: x-large;
+    }
+    h2{
+        font-size: large;
+    }
+    </style>
+
+    <script>
+        function showDiv() {
+            divElement = document.getElementById('help_div');
+            if (divElement.style.display == "block") divElement.style.display = "none";
+            else divElement.style.display = "block";
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <button onclick="start_loop()">Starten</button>
+    <span id="x"></span> X <span id="y"></span> Y -->
+    <div id='game_object' style="position: relative; padding: 0; margin: auto; display: block; width: 800px; margin-top: 10px;">
+        <canvas width='800px' height='800px' id="background_canvas" style="background-color: rgb(14, 14, 14); position: absolute; top: 0px; left: 0px; width: 800px; height: 800px;"></canvas>
+        <canvas width='800px' height='800px' id="main_canvas" style="position:absolute; top: 0px; left: 0px;" onmousemove='mouse("move", event)' onclick='mouse("click", event)'>Das Spiel konnte in diesem Browser nicht ausgeführt werden.</canvas>
+    </div>
+
+    <a href='#' onclick='showDiv()' class="help">Help</a>
+
+    <div id="help_div"  style="display:none;">
+        <h1>Informationen</h1>
+        Im Auftrag der Informatikmittelschule realisierten wir ein vollständiges HTML-Spiel innerhalb eines Semesters. Ich habe mich für das Brettspiel Schach entschieden.
+        <h1>Chess</h1>
+        Man kann das Spiel wie übliches Schach spielen. <br>
+        Mein Spiel zeigt an ob Schach oder Schachmatt ist und alle anderen wichtigen regeln werden auch beschrieben, doch habe ich nicht vollkommen alles implementiert. Der Spieler wird nicht gezwungen den König in Sicherheit zu bringen, obwohl dass bei einem Schach verlangt wird.
+        <h2>King</h2>
+        <div class="flex_paragraph">
+                <img src="media\moves\king_moves.png" alt="">
+                Der König kann sich in jede Richtung ein Feld bewegen. Sollte er sich und der jeweilige Turm nicht bewegt haben, kann er ebenfalls eine Rochade machen.
+        </div>
+        <h2>Queen</h2>
+        <div class="flex_paragraph">
+                <img src="media\moves\queen_moves.png" alt="">
+                Die Dame kann sich in jede Richtung soweit sie will bewegen.
+        </div>
+        <h2>Bishop</h2>
+        <div class="flex_paragraph">
+                <img src="media\moves\bishop_moves.png" alt="">
+                Der Läufer kann sich in seiner Diagonalen bewegen.
+        </div>
+        <h2>Knight</h2>
+        <div class="flex_paragraph">
+                <img src="media\moves\knight_moves.png" alt="">
+                Der Springer kann über Figuren hinweg springen. Er kann sich in jede Richtung 2 Felder nach vorne und eine nach links/rechts bewegen.
+        </div>
+        <h2>Rook</h2>
+        <div class="flex_paragraph">
+                <img src="media\moves\rook_moves.png" alt="">
+                Der Turm kann sich auf einer Geraden Linie bewegen.
+        </div>
+        <h2>Pawn</h2>
+        <div class="flex_paragraph">
+                <div class="imgs">
+                    <img src="media\moves\pawn\pawn_move1.png" alt="">
+                    <img src="media\moves\pawn\pawn_move2.png" alt="">
+                    <img src="media\moves\pawn\pawn_move3.png" alt="">
+                    <img src="media\moves\pawn\pawn_move4.png" alt="">
+                </div>
+                Dem Bauern ist es möglich ein schritt nach vorne zu machen. Sollte er sich noch auf seiner Start-Position befinden, kann er 2 Schritte nach vorne machen, wenn die Felder frei sind. <br>
+                Sollte sich eine gegnereische Figure links/rechts vor ihm befinden, kann der Bauer diese Figuren nehmen. Sollte aber eine Figur vor ihm stehen, kann er sie nicht schlagen. <br>
+                Wenn ein Bauer zwei Felder nach vorne zieht und direkt neben einem gegnerischen Bauern zum Stehen kommt, kann ihn der feindliche Bauer schlagen. <br>
+                Wenn der Bauer am Ende des Brettes stehen sollte, kann er sich tranformieren. Er kann zur Dame, zum Turm, zum Läufer oder zum Springer werden.
+        </div>
+</div>
+
+    <script type="text/javascript" src='chess.js'></script>
+</body>
+
+</html>
